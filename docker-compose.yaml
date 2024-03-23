@@ -1,0 +1,19 @@
+version: 4
+
+services:
+  db:
+    container_name: postgres
+    image: postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - ${REDIS_PORT}:${REDIS_PORT}
+    volumes:
+      - redis:/data
